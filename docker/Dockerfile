@@ -47,8 +47,10 @@ RUN rm -rf /etc/services.d/frontend /etc/nginx/conf.d/dev.conf \
 	&& pip uninstall --yes setuptools \
 	&& pip install --no-cache-dir "setuptools==58.0.0"
 
+COPY docker/scripts/nginx-dynamic.sh /app/scripts/nginx-dynamic.sh
+
 VOLUME [ "/data", "/etc/letsencrypt" ]
-ENTRYPOINT [ "/init" ]
+ENTRYPOINT [ "/app/scripts/nginx-dynamic.sh && /init" ]
 
 LABEL org.label-schema.schema-version="1.0" \
 	org.label-schema.license="MIT" \
