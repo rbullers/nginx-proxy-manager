@@ -12,6 +12,7 @@
 
 This project is a fork of the main Nginx Proxy Manager (v2.10.1) repository that allows using DDNS to build your nginx allow list.
 
+*** NOTE: There is no public Docker Image, you must clone this repo & build the docker image yourself! ***
 
 - [Setup](#setup)
 
