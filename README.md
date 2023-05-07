@@ -38,7 +38,8 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
 	environment:
-	  DDNS_HOST: example1.duckddns.org 
+	  DDNS_HOST: example.duckddns.org 
+
 ```
 
 This is the bare minimum configuration required. See the [documentation](https://nginxproxymanager.com/setup/) for more.
