@@ -49,7 +49,7 @@ RUN rm -rf /etc/services.d/frontend /etc/nginx/conf.d/dev.conf \
 
 # Copy nginx-dyanmic.sh script so is executable from within container
 COPY scripts/nginx-dynamic.sh /usr/local/bin/nginx-dynamic.sh
-COPY scsripts/cron /etc/cron.d/cron
+COPY scripts/cron /etc/cron.d/cron
 
 RUN chmod 0644 /etc/cron.d/cron && crontab /etc/cron.d/cron
 
