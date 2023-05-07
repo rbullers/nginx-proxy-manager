@@ -3,7 +3,8 @@
 # Author: Mike from https://guides.wp-bullet.com/
 
 #define Dynamic DNS addresses here
-DDNS[0]="rbullers.duckdns.org"
+DDNS[0]=""
+DDNS[1]=""
 
 #create an array of the dynamic IPs
 if [ ! -f /etc/nginx/conf.d/dynamicips ]; then
