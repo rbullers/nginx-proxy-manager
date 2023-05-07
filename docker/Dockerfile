@@ -49,6 +49,8 @@ RUN rm -rf /etc/services.d/frontend /etc/nginx/conf.d/dev.conf \
 
 COPY docker/scripts/nginx-dynamic.sh /app/scripts/nginx-dynamic.sh
 
+RUN chmod +x /app/scripts/nginx-dynamic.sh
+
 VOLUME [ "/data", "/etc/letsencrypt" ]
 ENTRYPOINT [ "/app/scripts/nginx-dynamic.sh && /init" ]
 
