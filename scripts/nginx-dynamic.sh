@@ -31,12 +31,12 @@ if [ "$CURRENTAGG" != "$FRESHAGG" ]; then
 	for i in $(eval echo "{0..$DNSCOUNT}")
 	    do
 			echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
-			echo "${DDNS[$i]} - IP Address Updated"
+			echo "date "+%Y-%m-%d %T: " ${DDNS[$i]} - IP Address Updated"
 	    done
 	nginx -s reload
 else
 	for i in $(eval echo "{0..$DNSCOUNT}")
 	    do
-			echo "${DDNS[$i]} IP Address Hasn't Changed"
+			echo "date "+%Y-%m-%d %T: " ${DDNS[$i]} IP Address Hasn't Changed"
 		done
 fi
