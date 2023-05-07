@@ -1,4 +1,4 @@
-#!/bin/bash env
+#!/bin/bash
 # Autowhitelist multiple DDNS Addresses for nginx
 # Author: Mike from https://guides.wp-bullet.com/
 
