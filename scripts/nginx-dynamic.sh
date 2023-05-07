@@ -3,8 +3,7 @@
 # Author: Mike from https://guides.wp-bullet.com/
 
 #define Dynamic DNS addresses here
-DDNS[0]=""
-DDNS[1]=""
+DDNS[0]=$1
 
 #create an array of the dynamic IPs
 if [ ! -f /etc/nginx/conf.d/dynamicips ]; then
@@ -31,12 +30,12 @@ if [ "$CURRENTAGG" != "$FRESHAGG" ]; then
 	for i in $(eval echo "{0..$DNSCOUNT}")
 	    do
 			echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
-			echo "$(date +%Y-%m-%d %T): ${DDNS[$i]} - IP Address Updated"
+			echo "$(date '+%Y-%m-%d %T'): ${DDNS[$i]} - IP Address Updated"
 	    done
 	nginx -s reload
 else
 	for i in $(eval echo "{0..$DNSCOUNT}")
 	    do
-			echo "$(date +%Y-%m-%d %T): ${DDNS[$i]} IP Address Hasn't Changed"
+			echo "$(date '+%Y-%m-%d %T'): ${DDNS[$i]} IP Address Hasn't Changed"
 		done
 fi
