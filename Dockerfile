@@ -54,7 +54,7 @@ COPY scripts/cron /etc/cron.d/cron
 RUN chmod 0644 /etc/cron.d/cron && crontab /etc/cron.d/cron
 
 VOLUME [ "/data", "/etc/letsencrypt" ]
-ENTRYPOINT ["/bin/sh", "-c" , "nginx-dynamic.sh && service cron start && exec /init"]
+ENTRYPOINT ["/bin/sh", "-c" , "nginx-dynamic.sh $DDNS && service cron start && exec /init"]
 
 LABEL org.label-schema.schema-version="1.0" \
 	org.label-schema.license="MIT" \
