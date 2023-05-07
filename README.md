@@ -23,29 +23,29 @@ This project is a fork of the main Nginx Proxy Manager (v2.10.1) repository that
 
 2. Clone this repository
 
-'''
+```bash
 git clone https://github.com/rbullers/nginx-proxy-manager.git
-'''
+```
 
 3. Edit scripts/nginx-dynamic.sh and add your DDNS Hostname
 
-'''
+```bash
 #define Dynamic DNS addresses here
 DDNS[0]=""
 DDNS[1]=""
-'''
+```
 
 4. Build the frontend
 
-'''
+```bash
 ./scripts/ci/frontend-build
-'''
+```
 
 5. Build Docker Image
 
-'''
+```bash
 docker build -f Dockerfile nginx-proxy-manager:local .
-'''
+```
 
 6. Create a docker-compose.yml file similar to this:
 
@@ -78,12 +78,12 @@ docker compose up -d
 
 8. Log in to the Admin UI & create a Proxy Host; add the below to Custom Nginx Configuration in Advanced
 
-'''
+```conf
 location = / {
 	include /etc/nginx/conf.d/dynamicips;
 	deny all;
 }
-'''
+```
 
 ## Contributors
 
