@@ -2,6 +2,7 @@
 # Autowhitelist multiple DDNS Addresses for nginx
 # Author: Mike from https://guides.wp-bullet.com/
 
+echo "DDNS="$1 >> /etc/environment
 #define Dynamic DNS addresses here
 DDNS[0]=$1
 
@@ -32,7 +33,7 @@ if [ "$CURRENTAGG" != "$FRESHAGG" ]; then
 			echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
 			echo "$(date '+%Y-%m-%d %T'): ${DDNS[$i]} - IP Address Updated"
 	    done
-	nginx -s reload
+	/usr/sbin/nginx -s reload
 else
 	for i in $(eval echo "{0..$DNSCOUNT}")
 	    do
