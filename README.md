@@ -37,8 +37,8 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-	environment:
-	  DDNS_HOST: example.duckddns.org 
+    environment:
+      DDNS_HOST: example.duckddns.org 
 
 ```
 
