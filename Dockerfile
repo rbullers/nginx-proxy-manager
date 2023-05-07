@@ -20,7 +20,7 @@ ENV SUPPRESS_NO_CONFIG_WARNING=1 \
 
 RUN echo "fs.file-max = 65535" > /etc/sysctl.conf \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends jq logrotate dnsutils \
+	&& apt-get install -y --no-install-recommends jq logrotate dnsutils cron \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -49,9 +49,12 @@ RUN rm -rf /etc/services.d/frontend /etc/nginx/conf.d/dev.conf \
 
 # Copy nginx-dyanmic.sh script so is executable from within container
 COPY scripts/nginx-dynamic.sh /usr/local/bin/nginx-dynamic.sh
+COPY scsripts/cron /etc/cron.d/cron
+
+RUN chmod 0644 /etc/cron.d/cron && crontab /etc/cron.d/cron
 
 VOLUME [ "/data", "/etc/letsencrypt" ]
-ENTRYPOINT ["/bin/sh", "-c" , "nginx-dynamic.sh && exec /init"]
+ENTRYPOINT ["/bin/sh", "-c" , "nginx-dynamic.sh && service cron start && exec /init"]
 
 LABEL org.label-schema.schema-version="1.0" \
 	org.label-schema.license="MIT" \
