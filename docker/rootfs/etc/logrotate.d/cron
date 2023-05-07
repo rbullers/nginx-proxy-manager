@@ -1,0 +1,7 @@
+/var/log/cron {
+    missingok
+    monthly
+    create 0664 root root
+    minsize 1M
+    rotate 1
+}
