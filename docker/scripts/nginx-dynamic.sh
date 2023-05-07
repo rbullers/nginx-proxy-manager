@@ -31,5 +31,5 @@ if [ "$CURRENTAGG" != "$FRESHAGG" ]; then
 	    do
                 echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
 	    done
-	service nginx reload
+	nginx -s reload
 fi
