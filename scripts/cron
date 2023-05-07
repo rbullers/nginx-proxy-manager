@@ -1,1 +1,1 @@
-*/5 * * * * /usr/local/bin/nginx-dynamic.sh $DDNS >> /var/log/crontab 2>&1
+*/1 * * * * /usr/local/bin/nginx-dynamic.sh $DDNS >> /var/log/crontab 2>&1
