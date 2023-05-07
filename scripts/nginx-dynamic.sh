@@ -4,7 +4,7 @@
 
 echo "DDNS="$1 >> /etc/environment
 #define Dynamic DNS addresses here
-DDNS[0]=$1
+DDNS=($1)
 
 #create an array of the dynamic IPs
 if [ ! -f /etc/nginx/conf.d/dynamicips ]; then
