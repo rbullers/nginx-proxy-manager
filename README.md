@@ -38,7 +38,7 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     environment:
-      DDNS_HOST: example.duckddns.org 
+      DDNS_HOST: example.duckddns.org # DDNS Host or List of DDNS Hosts seperated by whitespace
 
 ```
 
