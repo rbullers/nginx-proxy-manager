@@ -2,7 +2,7 @@
 # Autowhitelist multiple DDNS Addresses for nginx
 # Author: Mike from https://guides.wp-bullet.com/
 
-echo "DDNS="$1 >> /etc/environment
+echo "DDNS=$DDNS_HOST" > /etc/environment
 #define Dynamic DNS addresses here
 DDNS=($1)
 
