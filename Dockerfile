@@ -44,6 +44,7 @@ COPY docker/rootfs /
 # Remove frontend service not required for prod, dev nginx config as well
 RUN rm -rf /etc/services.d/frontend /etc/nginx/conf.d/dev.conf \
 	&& chmod 644 /etc/logrotate.d/nginx-proxy-manager \
+	&& chmod 644 /etc/logrotate.d/cron \
 	&& pip uninstall --yes setuptools \
 	&& pip install --no-cache-dir "setuptools==58.0.0"
 
