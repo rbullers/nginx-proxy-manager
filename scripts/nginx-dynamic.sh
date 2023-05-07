@@ -19,24 +19,22 @@ CURRENT=($(cat /etc/nginx/conf.d/dynamicips))
 #Generate fresh list
 let "DNSCOUNT=${#DDNS[@]} - 1"
 for i in $(eval echo "{0..$DNSCOUNT}")
-	do
-	    FRESH[$i]="allow $(dig x +short ${DDNS[$i]});"
-	done
+        do
+            FRESH[$i]="allow $(dig x +short ${DDNS[$i]});"
+        done
 
 #compare old list and new list, create new file if there are differences
 CURRENTAGG=${CURRENT[@]};
 FRESHAGG=${FRESH[@]};
 if [ "$CURRENTAGG" != "$FRESHAGG" ]; then
-	rm /etc/nginx/conf.d/dynamicips
-	for i in $(eval echo "{0..$DNSCOUNT}")
-	    do
-			echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
-			echo "$(date '+%Y-%m-%d %T'): ${DDNS[$i]} - IP Address Updated"
-	    done
-	/usr/sbin/nginx -s reload
+        rm /etc/nginx/conf.d/dynamicips
+        for i in $(eval echo "{0..$DNSCOUNT}")
+            do
+                        echo "${FRESH[$i]}" >> /etc/nginx/conf.d/dynamicips
+            done
+		
+        echo "$(date '+%Y-%m-%d %T'): IP Addresses Updated"
+        /usr/sbin/nginx -s reload
 else
-	for i in $(eval echo "{0..$DNSCOUNT}")
-	    do
-			echo "$(date '+%Y-%m-%d %T'): ${DDNS[$i]} IP Address Hasn't Changed"
-		done
+        echo "$(date '+%Y-%m-%d %T'): No Changes"
 fi
