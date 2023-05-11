@@ -52,7 +52,7 @@ docker compose up -d
 ```conf
 location = / {
 	include /etc/nginx/conf.d/dynamicips;
-	127.0.0.1;
+	allow 127.0.0.1;
 	deny all;
 }
 ```
