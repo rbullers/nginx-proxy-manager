@@ -3,7 +3,7 @@
 	<br><br>
 </p>
 
-This project is a fork of the main Nginx Proxy Manager (v2.10.1) repository that allows using DDNS to build your Nginx allow list, using Cron to check for IP changes.
+This project is a fork of the main [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) (v2.10.1) repository that allows using DDNS to build your Nginx allow list, using Cron to check for IP changes.
 
 
 - [Setup](#setup)
